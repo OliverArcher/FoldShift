@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 蓝色圆角底板 -->
+  <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+
+  <!-- 白色线框：小角度展开的折叠屏手机 -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="10"
+     stroke-linejoin="round" stroke-linecap="round">
+    <!-- 机身外轮廓（左右两块面板以约150°夹角微张） -->
+    <path d="M 52 186
+             L 52 50
+             L 128 70
+             L 204 50
+             L 204 186
+             L 128 206 Z"/>
+    <!-- 中间铰链折痕 -->
+    <path d="M 128 70 L 128 206"/>
+  </g>
+</svg>

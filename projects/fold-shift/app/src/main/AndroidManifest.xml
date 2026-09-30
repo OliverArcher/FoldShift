@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  FoldShift Android manifest. Phase 1 keeps the surface minimal: one launcher
+  Activity plus a Foreground Service placeholder that Phase 2 will flesh out.
+  We do not request any signature|privileged permissions; the switching work
+  flows through adb shell / system shells the user opts into.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"
+        android:minSdkVersion="34" />
+
+    <!-- Allow the user to opt the app out of doze so the Foreground Service
+         isn't paused while watching DeviceState callbacks. Requested only
+         when the user enables switching from the Settings screen. -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- Shizuku API permission. Stellar in Shizuku-compatible mode enforces
+         the same permission gate; declaring it here is required for the
+         binding handshake to succeed. -->
+    <uses-permission android:name="moe.shizuku.manager.permission.API_V23" />
+
+    <queries>
+        <!-- Required so PackageManager can enumerate installed launchers
+             starting on Android 11. We do not request QUERY_ALL_PACKAGES. -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.HOME" />
+        </intent>
+
+        <!-- Shizuku / Stellar compatibility-mode API. -->
+        <package android:name="moe.shizuku.manager" />
+        <package android:name="moe.shizuku.api" />
+        <package android:name="roro.stellar.manager" />
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FoldShift">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.FoldShift">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Placeholder for the Foreground Service. Phase 2 wires up the
+             DeviceState callback and the controller pipeline. -->
+        <service
+            android:name=".service.SwitchForegroundService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="folding_screen_default_home_switcher" />
+        </service>
+
+        <!-- Accessibility service used purely to dispatch HOME without
+             tripping Android 12+ Background Activity Launch. The user
+             must opt in via Settings → Accessibility; when disabled the
+             controller falls back to the slower shizuku shell path. -->
+        <service
+            android:name=".accessibility.FoldAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true"
+            android:label="@string/accessibility_service_label">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/fold_accessibility_service_config" />
+        </service>
+
+        <!-- Shizuku binder provider. Required to receive the Shizuku
+             Binder from the Shizuku Manager (or Stellar in compatibility
+             mode) at app startup. -->
+        <provider
+            android:name="rikka.shizuku.ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:multiprocess="false"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    </application>
+</manifest>

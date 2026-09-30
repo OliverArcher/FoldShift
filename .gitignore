@@ -1,0 +1,44 @@
+# --- Gradle build outputs ---
+build/
+.gradle/
+*.apk
+!FoldShift-*-release.apk
+*.aab
+*.dex
+*.class
+
+# --- Local Android config ---
+local.properties
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# --- Device test logs (keep the source tree clean) ---
+logs/
+
+# --- OS / editor noise ---
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# --- Internal planning (not part of the public release) ---
+projects/fold-shift/tasks/
+
+# --- Built app binaries in the workspace root ---
+# Only release artefacts named for the GitHub release are kept at the
+# repo root for convenience; everything else stays under build/.
+*release-unsigned.apk
+*debug.apk
+
+# --- Signing material: NEVER commit keystores or passwords. ---
+# Copy projects/fold-shift/gradle.properties.template to
+# projects/fold-shift/gradle.properties locally and fill in your own
+# keystore + passwords before running `./gradlew assembleRelease`.
+*.jks
+*.keystore
+projects/fold-shift/gradle.properties
+projects/fold-shift/app/*.jks
+projects/fold-shift/app/*.keystore

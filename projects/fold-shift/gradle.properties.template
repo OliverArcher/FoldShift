@@ -1,0 +1,18 @@
+# Project-wide Gradle settings — public template.
+#
+# To build a release locally, run `release-build.ps1` from the workspace
+# root. It pulls the keystore path + passwords from 1Password
+# (Agent vault item "Fishking Release Signing") and writes a real
+# `gradle.properties` next to this template. The real file is
+# gitignored. DO NOT commit it, the keystore, or any of the FOLDSHIFT_*
+# values below.
+org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+android.useAndroidX=true
+kotlin.code.style=official
+android.nonTransitiveRClass=true
+
+# FoldShift signing config (filled by release-build.ps1 from 1Password):
+# FOLDSHIFT_STORE_FILE=/absolute/path/to/your-release.jks
+# FOLDSHIFT_STORE_PASSWORD=your-store-password
+# FOLDSHIFT_KEY_ALIAS=your-key-alias
+# FOLDSHIFT_KEY_PASSWORD=your-key-password

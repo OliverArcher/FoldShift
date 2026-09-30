@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Foreground adapted from logo.svg: the same fold-outline silhouette as
+  the supplied logo, scaled into the adaptive icon safe zone. Stroke
+  width 10 is in the original 256-unit space; after the 0.422 group
+  scale it lands at ~4.2 px in the 108 dp viewport, which renders as a
+  crisp ~4 dp line at xxxhdpi without going chunky.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <group
+        android:scaleX="0.422"
+        android:scaleY="0.422"
+        android:pivotX="54"
+        android:pivotY="54">
+
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="10"
+            android:strokeLineJoin="round"
+            android:strokeLineCap="round"
+            android:pathData="M 52 186 L 52 50 L 128 70 L 204 50 L 204 186 L 128 206 Z" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="10"
+            android:strokeLineCap="round"
+            android:pathData="M 128 70 L 128 206" />
+    </group>
+</vector>

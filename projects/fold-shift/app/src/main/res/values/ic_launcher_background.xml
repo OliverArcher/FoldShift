@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adaptive icon background now lives in drawable/ic_launcher_background.xml
+  (gradient version of logo.svg). The solid colour is retained only for
+  any legacy references; the adaptive-icon XML in mipmap-anydpi-v26 uses
+  the drawable form.
+-->
+<resources>
+    <color name="ic_launcher_background">#1D4ED8</color>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Configuration for the FoldShift accessibility service. We only need
+  the service to be able to dispatch HOME on behalf of the foreground
+  process without tripping Android 12+ Background Activity Launch (BAL).
+  GLOBAL_ACTION_HOME is one of the system-allowed global actions for
+  any enabled accessibility service, so no extra flag is required.
+-->
+<accessibility-service
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeViewClicked"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:notificationTimeout="100"
+    android:accessibilityFlags="flagDefault"
+    android:summary="@string/accessibility_service_summary"
+    android:description="@string/accessibility_service_description" />

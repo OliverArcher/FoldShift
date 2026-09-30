@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FoldShift</string>
+    <string name="accessibility_service_label">FoldShift 折叠切换</string>
+    <string name="accessibility_service_summary">让 FoldShift 能把桌面切换到前台</string>
+    <string name="accessibility_service_description">折叠发生时把对应 launcher 拉到前台。授予本权限可获得更快的切换响应。</string>
+</resources>

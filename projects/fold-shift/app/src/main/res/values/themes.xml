@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Phase 1 uses the Material Components DayNight theme as the
+         Activity parent; the Compose UI brings in its own Material 3
+         palette. A custom dark-first FoldShift theme arrives in Phase 2. -->
+    <style name="Theme.FoldShift" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>
