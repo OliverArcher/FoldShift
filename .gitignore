@@ -2,10 +2,14 @@
 build/
 .gradle/
 *.apk
-!FoldShift-*-release.apk
 *.aab
 *.dex
 *.class
+
+# All built APKs live in the GitHub release page only — never in the
+# repo file tree. The release-build.ps1 script writes the release APK to
+# projects/fold-shift/app/build/outputs/apk/release/; upload it from
+# there.
 
 # --- Local Android config ---
 local.properties
@@ -26,12 +30,6 @@ Thumbs.db
 
 # --- Internal planning (not part of the public release) ---
 projects/fold-shift/tasks/
-
-# --- Built app binaries in the workspace root ---
-# Only release artefacts named for the GitHub release are kept at the
-# repo root for convenience; everything else stays under build/.
-*release-unsigned.apk
-*debug.apk
 
 # --- Signing material: NEVER commit keystores or passwords. ---
 # Copy projects/fold-shift/gradle.properties.template to
