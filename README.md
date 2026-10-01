@@ -85,6 +85,10 @@ cd projects\fold-shift
 
 Debug APK（`assembleDebug`）不需要签名，可直接构建。
 
+## 分发
+
+**APK 只通过 GitHub Release 分发，不入库。** `.gitignore` 把所有 `*.apk` 都挡掉了，`release-build.ps1` 出来的产物也只写本地 `app/build/outputs/...`，唯一上传渠道是 release page 的 asset。下载的人去 release 页拿 APK，看 source 的人看 git tree，互不混淆。
+
 ## 版本
 
 **1.0** · 2026-09-30
