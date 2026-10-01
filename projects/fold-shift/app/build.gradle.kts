@@ -24,14 +24,21 @@ android {
                 .gradleProperty("FOLDSHIFT_STORE_FILE")
                 .orElse("fishking-release.jks")
             storeFile = file(storeFilePath)
+            // `.orElse(...)` followed by `.get()` so debug builds evaluate
+            // this block even when no gradle.properties is present (the
+            // defaults are empty, but release validation will fail loudly
+            // at the package step if any value is missing or empty).
             storePassword = providers
                 .gradleProperty("FOLDSHIFT_STORE_PASSWORD")
+                .orElse("")
                 .get()
             keyAlias = providers
                 .gradleProperty("FOLDSHIFT_KEY_ALIAS")
+                .orElse("fishking")
                 .get()
             keyPassword = providers
                 .gradleProperty("FOLDSHIFT_KEY_PASSWORD")
+                .orElse("")
                 .get()
         }
     }
