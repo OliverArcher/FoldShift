@@ -16,3 +16,6 @@ android.nonTransitiveRClass=true
 # FOLDSHIFT_STORE_PASSWORD=your-store-password
 # FOLDSHIFT_KEY_ALIAS=your-key-alias
 # FOLDSHIFT_KEY_PASSWORD=your-key-password
+
+# APKs live on the GitHub release page ONLY. Never commit them to the
+# repo file tree (the .gitignore `*.apk` rule enforces this).
